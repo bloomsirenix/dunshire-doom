@@ -23,6 +23,10 @@
     const { error, audio, musicTrack } = context;
     function enableSoundOnce() {
         audio.resume();
+        // Discord iframe: also try to unlock audio on any user interaction
+        document.addEventListener('click', () => audio.resume(), { once: false });
+        document.addEventListener('keydown', () => audio.resume(), { once: false });
+        document.addEventListener('pointerdown', () => audio.resume(), { once: false });
     }
 
     const { pointerLock, soundGain, musicGain } = context;
