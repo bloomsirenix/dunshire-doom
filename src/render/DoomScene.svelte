@@ -47,6 +47,9 @@
     const { scene, camera, size } = useThrelte();
     const composer = new EffectComposer(renderer);
 
+    // Expose scene for multiplayer shim
+    $: { (window as any).__dunshire_scene = scene; }
+
     const setupEffectComposer = (camera: Camera, hudScene: Scene) => {
         composer.passes.length = 0;
         composer.addPass(new RenderPass(scene, camera));

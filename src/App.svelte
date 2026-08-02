@@ -104,6 +104,8 @@
             game.startMap(urlMapName);
             loadOptionalUrlParams(game, params);
             recentlyUsed.push(game.wad.name, urlMapName, game.skill);
+            // Expose game for multiplayer shim
+            (window as any).__dunshire_game = game;
         }
 
         // mostly here for testing intermission screens
